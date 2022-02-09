@@ -40,7 +40,7 @@ def mock_setup_entry() -> Generator[None, None, None]:
 @pytest.fixture
 async def mock_device(
     request: pytest.FixtureRequest,
-) -> MockConfigEntry:
+) -> RokuDevice:
     """Return the mocked roku device."""
     fixture: str = "roku/roku3.json"
     if hasattr(request, "param") and request.param:
