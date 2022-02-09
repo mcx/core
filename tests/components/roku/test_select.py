@@ -11,8 +11,6 @@ from homeassistant.const import (
     ATTR_ENTITY_ID,
     ATTR_ICON,
     SERVICE_SELECT_OPTION,
-    STATE_UNAVAILABLE,
-    STATE_UNKNOWN,
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
@@ -116,7 +114,7 @@ async def test_application_select_error(
 
     state = hass.states.get("select.my_roku_3_application")
     assert state
-    assert state.state is STATE_UNKNOWN
+    assert state.state == "Home"
     assert "Invalid response from API" in caplog.text
     assert mock_roku.launch.call_count == 1
     mock_roku.launch.assert_called_with("12")
